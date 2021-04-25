@@ -1,10 +1,16 @@
-# Next.js App Boilerplate 
-## Built by: dev.icarus
-#### View my Site: https://devicarus.com
+# Quest Landing Page
 
-Boilerplate for Next.js app. Set up structure and basic css for typography and layout, as well as general purpose elements.
+## An Original Design By: dev.icarus
 
-##### Check me out on github: https://github.com/icarus612
-##### Other projects:  https://mazerunner.devicarus.com | https://quest.devicarus.com | https://deadalus.devicarus.com
+#### live demo: https://quest.devicarus.com
+
+#### A React Project
+
+Feel free to use it and change it how you like - Quest operates under MIT licence. To see a preview just open the download and run "npm run start". This is built using facebooks create-react-app, and hosted using netlifys amazing free services. Quest takes advantage of several external libraries including Bootstrap, and Anime.js, and of course React. It also takes advantage of a another repo made by myself called dots. 
+
+##### https://github.com/icarus612/dots
+
+For other fun projects check out https://daedalus.devicarus.com
+###### For web development help visit: https://devicarus.com
 
 
