@@ -2,7 +2,7 @@ import React from 'react';
 import cx from "classnames"
 import Image from 'components/image'
 
-import local from 'styles/sections/header/basic.module.scss'
+import local from 'styles/sections/header.module.scss'
 import layout from 'styles/layout.module.scss'
 
 import Link from "next/link"

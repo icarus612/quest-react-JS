@@ -1,4 +1,4 @@
-import anime from '../anime/lib/anime.es.js';
+import anime from 'animejs';
 
 export var animateBG = (el, colors, t) =>{
     let animation = [];
@@ -18,6 +18,7 @@ export var animateBG = (el, colors, t) =>{
     return animation[0].play()
     
 }
+
 export var scrollBG = (el, colors, t) => {
     let animation = [];
     for (let i = 0; i < colors.length; i++){
