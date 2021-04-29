@@ -217,19 +217,12 @@ let fillColor = (e, t, svg) => {
 }
 
 let animation = (e, t, svg, mvX, mvY, crv, clr, d) => {
-  let howFar = (s, e, vw) => {
-    if (!e.current && !s.current) return []
-    let start = s.current.getBoundingClientRect()
-    let end = e.current.getBoundingClientRect()
-    let x = [(start.left + start.right) / 2 - vw, (end.left + end.right) / 2 - vw];
-    return x
-  }
-  let vw = document.getElementById("container").getBoundingClientRect().left + 20
+
   let animate = anime.timeline({
 
   }).add({
     targets: svg.children[e],
-    translateX: translateX(howFar(mvX[0], mvX[1], vw), t, crv),
+    translateX: translateX([mvX[0].current.offsetLeft, mvX[1].current.offsetLeft], t, crv),
     translateY: translateY(mvY, t, crv),
     fill: fillColor(clr, t, svg),
     backgroundColor: fillColor(clr, t, svg),

@@ -29,7 +29,7 @@ export default () => {
   return (
     <>
       <Header />
-      <div className={cx(layout.container, global.container_margin)} id="container">
+      <div className={cx(layout.container, global.container_margin)}>
         <div className={cx(layout.w100_percent, layout.f_row, layout.justify_center)}>
           <div className={cx(global.card, layout.block_12, layout.text_center)}>
             <h1>
