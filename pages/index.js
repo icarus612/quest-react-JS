@@ -95,7 +95,7 @@ export default () => {
               The link to either github is here:
             </p>
             <div className={layout.f_row}>
-              <Link target='_blank' href="https://github.com/icarus612/questLanding-next-JS">
+              <Link target='_blank' href="https://github.com/icarus612/quest-next-JS">
                 <div className={global.btn_purple_basic}>Quest</div>
               </Link>
               <Link target='_blank' href="https://github.com/icarus612">
