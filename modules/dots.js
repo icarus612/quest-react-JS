@@ -226,14 +226,18 @@ const whereTarget = (position, el) => {
 
 const animation = (e, t, svg, start, end, crv, clr, d) => {
 
-  let animate = anime.timeline({})
-    .add({
-      targets: svg.children[e],
-      translateX: translateX([start[0], end[0]], t, crv),
-      translateY: translateY([start[1], end[1]], t, crv),
+  const _start = whereTarget(start, svg.children[e])
+  const _end = whereTarget(end, svg.children[e])
+
+  let animate = anime.timeline({
+    targets: svg.children[e]
+  }).add({
+      translateX: translateX([_start[0], _end[0]], t, crv),
+      translateY: translateY([_start[1], _end[1]], t, crv),
       fill: fillColor(clr, t, svg),
       backgroundColor: fillColor(clr, t, svg),
       complete: function (anim) {
+        animate.reset()
         animation(e, t, svg, start, end, crv, clr, 0)
       },
     }, d);
@@ -248,5 +252,5 @@ export default ({el, start, end, time, curve, color}) => {
   const item = el.current
   if (!item) return 
   //mobile functions for distance
-  [...item.children].forEach((_, i)=> animation(i, time, item, whereTarget(start, item.children[i]), whereTarget(end, item.children[i]), curve, color, delay(item, time, i)))
+  [...item.children].forEach((_, i)=> animation(i, time, item, start, end, curve, color, delay(item, time, i)))
 }
