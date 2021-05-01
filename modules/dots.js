@@ -216,31 +216,37 @@ let fillColor = (e, t, svg) => {
 
 }
 
-let animation = (e, t, svg, mvX, mvY, crv, clr, d) => {
-
-  let animate = anime.timeline({
-
-  }).add({
-    targets: svg.children[e],
-    translateX: translateX([mvX[0].current.offsetLeft, mvX[1].current.offsetLeft], t, crv),
-    translateY: translateY(mvY, t, crv),
-    fill: fillColor(clr, t, svg),
-    backgroundColor: fillColor(clr, t, svg),
-    complete: function (anim) {
-      animation(e, t, svg, mvX, mvY, crv, clr, 0)
-    },
-  }, d);
-
-  return animate
-
+const whereTarget = (position, el) => {
+  let currentPosition = position.getBoundingClientRect()
+  let element = el.getBoundingClientRect()
+  let x = position.offsetLeft;
+  let y = ((currentPosition.top + currentPosition.bottom) / 2 - (element.top + element.bottom) / 2);
+  return [x, y]
 }
 
-export default (svg, mvX, mvY, t, crv, clr) => {
-  let delay = (el, time, n) => {
-    return 3.5 * time / el.children.length * n
+const animation = (e, t, svg, start, end, crv, clr, d) => {
+
+  let animate = anime.timeline({})
+    .add({
+      targets: svg.children[e],
+      translateX: translateX([start[0], end[0]], t, crv),
+      translateY: translateY([start[1], end[1]], t, crv),
+      fill: fillColor(clr, t, svg),
+      backgroundColor: fillColor(clr, t, svg),
+      complete: function (anim) {
+        animation(e, t, svg, start, end, crv, clr, 0)
+      },
+    }, d);
+
+  return animate
+}
+
+export default ({el, start, end, time, curve, color}) => {
+  let delay = (e, time, n) => {
+    return 3.5 * time / e.children.length * n
   }
-  const item = svg.current
+  const item = el.current
   if (!item) return 
   //mobile functions for distance
-  [...item.children].forEach((_, i)=> animation(i, t, item, mvX, mvY, crv, clr, delay(item, t, i)))
+  [...item.children].forEach((_, i)=> animation(i, time, item, whereTarget(start, item.children[i]), whereTarget(end, item.children[i]), curve, color, delay(item, time, i)))
 }

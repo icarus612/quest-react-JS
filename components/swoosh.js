@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react'
 import dotsMovement from 'modules/dots.js'
-import cx from 'classnames'
 
-import layout from 'styles/layout.module.scss'
 import global from 'styles/global.module.scss'
 
 const debounce = (func, wait) => {
@@ -22,12 +20,22 @@ const Swoosh = (props) => {
 		startElement,
 		endElement,
 		dots=5,
-		height=300
+		height=300,
+		width,
 	} = props
 	const swoosh = useRef(null)
+	
 	useEffect(() => {
-		debounce(dotsMovement(swoosh, [startElement, endElement], [-6, height], 1000, "cubicX", ["#009de4", "#06f3a0", "#f30659"]), 100)
+		debounce(dotsMovement({
+			el: swoosh, 
+			start: startElement.current, 
+			end: endElement.current, 
+			time: 1000, 
+			curve: "cubicX", 
+			color: ["#009de4", "#06f3a0", "#f30659"]
+		}), 100)
   }, [startElement.current, endElement.current]);    
+
 	return (
 		<div style={{height: height + "px"}} ref={swoosh}>
 			{[...Array(dots)].map((_, i)=> <div key={i} className={global.dot} />)}

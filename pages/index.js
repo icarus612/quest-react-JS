@@ -50,7 +50,7 @@ export default () => {
           </div>
         </div>
 
-        <Swoosh startElement={firstRef} endElement={secondRef} />
+        <Swoosh startElement={firstRef} endElement={secondRef} width={width} />
 
         <div className={cx(layout.w100_percent, layout.f_row, layout.justify_start)}>
           <div className={cx(global.card, layout.block_12_mob, layout.block_6)}>
@@ -66,7 +66,7 @@ export default () => {
           </div>
         </div>
 
-        <Swoosh startElement={thirdRef} endElement={fourthRef} />
+        <Swoosh startElement={thirdRef} endElement={fourthRef} width={width} />
 
         <div className={cx(layout.w100_percent, layout.f_row, layout.justify_end)}>
           <div className={cx(global.card, layout.block_12_mob, layout.block_6)}>
@@ -82,7 +82,7 @@ export default () => {
           </div>
         </div>
 
-        <Swoosh startElement={fifthRef} endElement={sixthRef} />
+        <Swoosh startElement={fifthRef} endElement={sixthRef} width={width} />
 
         <div className={cx(layout.w100_percent, layout.f_row, layout.justify_start)}>
           <div className={cx(global.card, layout.block_12_mob, layout.block_6)}>
